@@ -2,15 +2,15 @@ import express from "express";
 
 const app = express();
 
-app.get("/api/test", (req, res) => {
+app.get("/api/tasks", (req, res) => {
     {
         res.json(
             [
                 {
-                    title: "test"
+                    title: "task1"
                 },
                 {
-                    title: "hei"
+                    title: "task2"
                 }
             ]
         )
