@@ -6,14 +6,17 @@ app.use(bodyParser.json());
 
 const TASKS = [
     {
+        id: 1,
         title: "task1",
         status: "done"
     },
     {
+        id: 2,
         title: "task2",
         status: "begun"
     },
     {
+        id: 3,
         title: "task3",
         status: "future"
     }
@@ -25,15 +28,13 @@ app.get("/api/tasks", (req, res) => {
     }
 })
 
-app.put("/api/tasks", (req, res) => {
+app.put("/api/tasks/:id", (req, res) => {
+    const id = parseInt(req.params.id);
     const {title} = req.body;
 
-    for (const task of TASKS) {
-        task.title = title;
-    }
+    TASKS.find(t => t.id === id).title = title;
 
     res.end();
-
 })
 
 app.use(express.static("../client/dist"));
